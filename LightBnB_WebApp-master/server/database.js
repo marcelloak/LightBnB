@@ -159,8 +159,6 @@ const addProperty = function(property) {
   `
   const values = [property.title, property.description, property.owner_id, property.cover_photo_url, property.thumbnail_photo_url, property.cost_per_night, property.parking_spaces, property.number_of_bathrooms, property.number_of_bedrooms, property.province, property.city, property.country, property.street, property.post_code];
   
-  return pool.query(queryString, values).then(res => {
-    console.log(res.rows[0]);
-    return res.rows[0];});
+  return pool.query(queryString, values).then(res => res.rows[0]);
 }
 exports.addProperty = addProperty;
