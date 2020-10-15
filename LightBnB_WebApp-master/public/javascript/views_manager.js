@@ -6,6 +6,7 @@ $(() => {
 
   window.views_manager.show = function(item) {
     $newPropertyForm.detach();
+    $newReservationForm.detach();
     $propertyListings.detach();
     $searchPropertyForm.detach();
     $logInForm.detach();
@@ -17,6 +18,9 @@ $(() => {
         break;
       case 'newProperty':
         $newPropertyForm.appendTo($main);
+        break;
+      case 'newReservation':
+        $newReservationForm.appendTo($main);
         break;
       case 'searchProperty':
         $searchPropertyForm.appendTo($main);

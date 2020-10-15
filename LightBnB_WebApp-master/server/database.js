@@ -162,3 +162,21 @@ const addProperty = function(property) {
   return pool.query(queryString, values).then(res => res.rows[0]);
 }
 exports.addProperty = addProperty;
+
+
+/**
+ * Add a reservation to the database
+ * @param {{}} reservation An object containing all of the reservation details.
+ * @return {Promise<{}>} A promise to the reservation.
+ */
+const addReservation = function(reservation) {
+  const queryString = `
+  INSERT INTO reservations (property_id, guest_id, start_date, end_date)
+  VALUES ($1, $2, $3, $4)
+  RETURNING *;
+  `
+  const values = [reservation.property_id, reservation.guest_id, reservation.start_date, reservation.end_date];
+  
+  return pool.query(queryString, values).then(res => res.rows[0]);
+}
+exports.addReservation = addReservation;
